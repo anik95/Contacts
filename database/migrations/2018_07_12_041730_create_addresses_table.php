@@ -16,9 +16,10 @@ class CreateAddressesTable extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('contacts_id');
-            $table->string('address_type');
+            $table->enum('address_type', ['billing', 'shipping']);
             $table->string('address');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

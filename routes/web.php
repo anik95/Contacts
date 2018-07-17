@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ContactsController@index');
 //Route::get('/contacts/{id}', 'ContactsController@show');
 //Route::get('/form', 'ContactsController@index');
 Route::resource('/contacts', 'ContactsController');
+//Route::get('/contacts/sort','ContactsController@sort');

@@ -4,7 +4,7 @@
 
     <div class="well">
         @if(count($x))
-        <div class="well">
+        
             <h2>Contact Name: {{$y->name}}</h2>
             @foreach($x as $v)
                 <div class="well">
@@ -20,7 +20,7 @@
                     {{Form::submit('Delete',['class'=>'btn btn-danger'])}}
                 {!!Form::close()!!}
             </div>
-        </div>
+        
         @endif
     </div>
     

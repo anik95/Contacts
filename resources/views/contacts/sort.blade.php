@@ -8,10 +8,10 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col"><a href="{{action('ContactsController@index', $value)}}">Name</a></th>
-            <th scope="col"><a href="{{action('ContactsController@index', $value)}}">Type</a></th>
-            <th scope="col"><a href="{{action('ContactsController@index', $value)}}">Created At</a></th>
-            <th scope="col"><a href="{{action('ContactsController@index', $value)}}">Updated At</a></th>
+            <th scope="col"><a href="{{action('ContactsController@sort', $new='name')}}">Name</a></th>
+            <th scope="col"><a href="{{action('ContactsController@sort', [$value, $new='type'])}}">Type</a></th>
+            <th scope="col"><a href="{{action('ContactsController@sort', [$value, $new='created_at'])}}">Created At</a></th>
+            <th scope="col"><a href="{{action('ContactsController@sort', [$value, $new='updated_at'])}}">Updated At</a></th>
           </tr>
         </thead>
         <tbody>
