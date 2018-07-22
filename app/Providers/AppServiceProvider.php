@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+//use JWTAuth;
+
 
 class AppServiceProvider extends ServiceProvider
 {

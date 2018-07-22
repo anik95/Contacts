@@ -27,6 +27,7 @@ class ContactsController extends Controller
         ->get();
 
         return response()->json($user);
+        //return response()->json($user);
 
     }
 
@@ -44,20 +45,28 @@ class ContactsController extends Controller
     {
     //     $var= new Contact;
         //====saves in database from postman========
+        //return response()->json($request);
+        //$user = User::find( $request->id);
+        // $payload = auth()->user()->id;
+        // return response()->json($payload);
+        
         $newuser = new Contact;
         //$newaddress = new Address;
-
+        
+        
+        
         $newuser->name=$request->name;
         $newuser->type=$request->type;
         $newuser->save();
-
-         DB::table('addresses')->insert(array(
+        
+        DB::table('addresses')->insert(array(
             array('contacts_id'=>$newuser->id , 'address_type'=>'billing','address'=>$request->billing_address),
             array('contacts_id'=>$newuser->id , 'address_type'=>'shipping','address'=>$request->shipping_address)
-         ));
-
+        ));
+        
+        return response()->json($request->currentUser);
         // ========================================
-        return response()->json($request->type);
+        //return response()->json($request->type);
     }
 
     public function apiEdit(Request $request)
