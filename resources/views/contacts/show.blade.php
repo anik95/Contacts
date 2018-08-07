@@ -4,7 +4,6 @@
 
     <div class="well">
         @if(count($x))
-        
             <h2>Contact Name: {{$y->name}}</h2>
             @foreach($x as $v)
                 <div class="well">

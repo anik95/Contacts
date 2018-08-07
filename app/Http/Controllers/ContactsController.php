@@ -11,8 +11,10 @@ use Illuminate\Http\Response;
 class ContactsController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth:api');
     }
+    
+
 
     /**
      * Display a listing of the resource.
@@ -23,7 +25,7 @@ class ContactsController extends Controller
     public function apiShow()
     {
         $user=Contact::with('address')
-        ->orderBy('name','asc')
+        ->orderBy('id','asc')
         ->get();
 
         return response()->json($user);
@@ -35,7 +37,7 @@ class ContactsController extends Controller
     {
         $user=Contact::with('address')
         ->where('id', $request->id)
-        ->get();
+        ->first();
 
         return response()->json($user);
     }
@@ -98,6 +100,30 @@ class ContactsController extends Controller
         $addressDelete = Address::where('contacts_id', $request->id)->delete();
         return response()->json('successfully deleted');
     }
+
+    public function searchContact(Request $request){
+      $searchedValue = (int)($request->search);
+      if($searchedValue==0)
+      {
+        $user = Contact::with('address')
+        ->where('name', 'LIKE',  $request->search . '%' )
+        ->orWhere('type', 'LIKE',  $request->search . '%')
+        // ->orWhere('id', 'LIKE',  $request->search . '%')
+        ->orderBy('id','asc')
+        ->get();
+  
+        return response()->json($user);
+      }
+      else
+      {
+        $user = Contact::with('address')
+        ->orderBy('id', 'asc')
+        ->get();
+        return response()->json([$user[$searchedValue-1]]);
+      }
+
+    }
+
 
     public function index()
     {

@@ -79,11 +79,11 @@ Auth::routes();
 //---------------------------------------------------------
 
 
-Route::post('/contacts/create', 'ContactsController@apiCreate');
-Route::post('/contacts/edit/{id}', 'ContactsController@apiEdit');
-Route::get('/contacts/show', 'ContactsController@apiShow');
-Route::get('/contacts/show/{id}', 'ContactsController@apiShowById');
-Route::delete('/contacts/delete/{id}', 'ContactsController@apiDelete');   
+// Route::post('/contacts/create', 'ContactsController@apiCreate');
+// Route::post('/contacts/edit/{id}', 'ContactsController@apiEdit');
+// Route::get('/contacts/show', 'ContactsController@apiShow');
+// Route::get('/contacts/show/{id}', 'ContactsController@apiShowById');
+// Route::delete('/contacts/delete/{id}', 'ContactsController@apiDelete');   
 
 //----------- trying jwt again----------------
 Route::group([
@@ -107,6 +107,7 @@ Route::group([
         Route::get('/contacts/show', 'ContactsController@apiShow');
         Route::get('/contacts/show/{id}', 'ContactsController@apiShowById');
         Route::delete('/contacts/delete/{id}', 'ContactsController@apiDelete'); 
+        Route::post('/contacts/search', 'ContactsController@searchContact');
     });
 
 
