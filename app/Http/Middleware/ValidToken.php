@@ -21,19 +21,19 @@ class ValidToken
     {
         $id = auth()->user()->id;
         $user = User::find($id );
-//$userinfo = UserInfo::where('user_id','=',$user->id)->first();
+        //$userinfo = UserInfo::where('user_id','=',$user->id)->first();
 
-$payloadable = [
-        'id' => $user->id,
-        'name' => $user->name,
-        'email' => $user->email,
-        //'company' => $userinfo->company,
-        //'job_position' => $userinfo->job_position,
-        //'country' => $userinfo->country,
-        //'organization' => $userinfo->organization_id
-    ];
-    $request->currentUser = $user;
-// $token = JWTAuth::fromUser($user,$payloadable);
-        return $next($request);
-    }
+        $payloadable = [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            //'company' => $userinfo->company,
+            //'job_position' => $userinfo->job_position,
+            //'country' => $userinfo->country,
+            //'organization' => $userinfo->organization_id
+        ];
+        $request->currentUser = $user;
+        // $token = JWTAuth::fromUser($user,$payloadable);
+            return $next($request);
+        }
 }

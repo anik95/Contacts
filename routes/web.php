@@ -11,7 +11,7 @@
 |
 */
 Auth::routes();
-Route::get('/', 'ContactsController@index');
+//Route::get('/', 'ContactsController@index');
 //Route::get('/contacts/{id}', 'ContactsController@show');
 //Route::get('/form', 'ContactsController@index');
 Route::resource('/contacts', 'ContactsController');
