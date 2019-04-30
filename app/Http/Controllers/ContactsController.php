@@ -32,13 +32,14 @@ class ContactsController extends Controller
         //return response()->json($user);
 
     }
-
+    /**
+     * show list details
+     */
     public function apiShowById(Request $request)
     {
         $user=Contact::with('address')
         ->where('id', $request->id)
         ->first();
-
         return response()->json($user);
     }
 
